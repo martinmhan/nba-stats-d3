@@ -11,6 +11,7 @@ module.exports = {
 		"no-console": "off",
 		"react/destructuring-assignment": "off",
 		"no-nested-ternary": "off",
-		"flatTernaryExpressions": true
+		"flatTernaryExpressions": true,
+		"import/prefer-default-export": "off",
 	},
 };

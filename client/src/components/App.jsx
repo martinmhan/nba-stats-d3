@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
+import ScatterplotViewContainer from '../containers/ScatterplotViewContainer';
+import styles from '../styles/App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+export class App extends Component {
+  componentWillMount = async () => {
+    try {
+      const { data } = await Axios.get('/api/data/');
+      this.props.updateScatterplotData(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   render = () => (
-    <div id="app">
-      App
+    <div className={styles.app}>
+      <ScatterplotViewContainer />
     </div>
   );
 }
-
-export default App;
