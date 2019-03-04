@@ -1,0 +1,50 @@
+{
+  "name": "nba-stats-d3",
+  "version": "1.0.0",
+  "description": "[Data visualization] Customizable scatterplot of NBA statistics built with React, Redux, and D3",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "build:dev": "webpack -w --env.NODE_ENV=development --progress",
+    "build:prod": "webpack --env.NODE_ENV=production",
+    "start:dev": "nodemon server/index.js",
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinmhan/nba-stats-d3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinmhan/nba-stats-d3/issues"
+  },
+  "homepage": "https://github.com/martinmhan/nba-stats-d3#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.1.0",
+    "babel-loader": "^8.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "jest": "^24.1.0",
+    "jest-enzyme": "^7.0.1",
+    "nodemon": "^1.18.10",
+    "supertest": "^3.4.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  }
+}
