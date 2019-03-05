@@ -3,3 +3,7 @@ Viz-it is an application that allows the user to visualize NBA player statistics
 
 Technical Stack
 - Development: PostgreSQL | Express | React | Redux | D3.js | Node.js
+
+Features TBD:
+- Player info component that renders when a circle is clicked
+
