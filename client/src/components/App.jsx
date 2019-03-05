@@ -4,7 +4,7 @@ import Axios from 'axios';
 import ScatterplotViewContainer from '../containers/ScatterplotViewContainer';
 import styles from '../styles/App.css';
 
-export class App extends Component {
+class App extends Component {
   componentWillMount = async () => {
     try {
       const { data } = await Axios.get('/api/data/');
@@ -24,3 +24,5 @@ export class App extends Component {
 App.propTypes = {
   updatePlayerData: PropTypes.func.isRequired,
 };
+
+export default App;

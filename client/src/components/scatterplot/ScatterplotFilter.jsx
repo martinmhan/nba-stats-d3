@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScatterplotFilterOption } from './ScatterplotFilterOption';
+import PropTypes from 'prop-types';
+import ScatterplotFilterOption from './ScatterplotFilterOption';
 import styles from '../../styles/scatterplot/ScatterplotFilter.css';
 
 export const ScatterplotAxisSelector = ({ name, values, updateStat }) => (
@@ -60,3 +61,16 @@ export const ScatterplotFilter = ({ name, values, filters, updateFilters }) => (
     </div>
   </div>
 );
+
+ScatterplotAxisSelector.propTypes = {
+  name: PropTypes.string.isRequired,
+  values: PropTypes.arrayOf(PropTypes.string).isRequired,
+  updateStat: PropTypes.func.isRequired,
+};
+
+ScatterplotFilter.propTypes = {
+  name: PropTypes.string.isRequired,
+  values: PropTypes.arrayOf(PropTypes.string).isRequired,
+  filters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  updateFilters: PropTypes.func.isRequired,
+};

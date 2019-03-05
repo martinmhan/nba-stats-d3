@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from '../../styles/scatterplot/ScatterplotFiltersList.css';
 import { ScatterplotAxisSelector, ScatterplotFilter } from './ScatterplotFilter';
 
-export const ScatterplotFiltersList = (props) => {
+const ScatterplotFiltersList = (props) => {
   const {
     stats,
     positions,
@@ -47,3 +47,5 @@ ScatterplotFiltersList.propTypes = {
   updateScatterplotPositionFilters: PropTypes.func.isRequired,
   updateScatterplotTeamFilters: PropTypes.func.isRequired,
 };
+
+export default ScatterplotFiltersList;

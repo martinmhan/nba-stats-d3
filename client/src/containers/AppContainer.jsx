@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { App } from '../components/App';
 import { updatePlayerData } from '../actions/Scatterplot';
+import App from '../components/App';
 
 const mapStateToProps = state => ({
   playerData: state.playerData,

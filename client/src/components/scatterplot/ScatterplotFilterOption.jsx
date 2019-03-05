@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../../styles/scatterplot/ScatterplotFilterOption.css';
 
-export const ScatterplotFilterOption = ({ value, filters, updateFilters }) => (
+const ScatterplotFilterOption = ({ value, updateFilters }) => (
   <div className={styles.scatterplotfilteroption}>
     <input
       type="checkbox"
@@ -11,3 +12,10 @@ export const ScatterplotFilterOption = ({ value, filters, updateFilters }) => (
     {value}
   </div>
 );
+
+ScatterplotFilterOption.propTypes = {
+  value: PropTypes.string.isRequired,
+  updateFilters: PropTypes.func.isRequired,
+};
+
+export default ScatterplotFilterOption;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ScatterplotView } from '../components/scatterplot/ScatterplotView';
+import ScatterplotView from '../components/scatterplot/ScatterplotView';
 import {
   updateScatterplotXStat,
   updateScatterplotYStat,

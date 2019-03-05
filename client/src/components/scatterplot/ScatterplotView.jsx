@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Scatterplot } from './Scatterplot';
-import { ScatterplotFiltersList } from './ScatterplotFiltersList';
+import Scatterplot from './Scatterplot';
+import ScatterplotFiltersList from './ScatterplotFiltersList';
 import { allPositions, allTeams } from '../../reducers/ScatterplotReducers';
 import styles from '../../styles/scatterplot/ScatterplotView.css';
 
-export class ScatterplotView extends Component {
+class ScatterplotView extends Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
@@ -74,3 +74,5 @@ ScatterplotView.propTypes = {
   updateScatterplotPositionFilters: PropTypes.func.isRequired,
   updateScatterplotTeamFilters: PropTypes.func.isRequired,
 };
+
+export default ScatterplotView;

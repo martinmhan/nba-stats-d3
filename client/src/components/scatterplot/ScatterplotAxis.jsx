@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 
-export class ScatterplotAxis extends Component {
+class ScatterplotAxis extends Component {
   componentDidMount = () => { this.renderAxis(); };
 
   componentDidUpdate = () => { this.renderAxis(); };
@@ -45,3 +46,15 @@ export class ScatterplotAxis extends Component {
     );
   };
 }
+
+ScatterplotAxis.propTypes = {
+  orient: PropTypes.string.isRequired,
+  scale: PropTypes.func.isRequired,
+  translate: PropTypes.string.isRequired,
+  padding: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  stat: PropTypes.string.isRequired,
+};
+
+export default ScatterplotAxis;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
-import { ScatterplotDots } from './ScatterplotDots';
-import { ScatterplotXYAxes } from './ScatterplotXYAxes';
+import ScatterplotDots from './ScatterplotDots';
+import ScatterplotAxis from './ScatterplotAxis';
 import styles from '../../styles/scatterplot/Scatterplot.css';
 
-export class Scatterplot extends Component {
+class Scatterplot extends Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
@@ -40,17 +40,13 @@ export class Scatterplot extends Component {
     const yMin = data => d3.min(data, d => parseFloat(d[yStat]));
     const yMax = data => d3.max(data, d => parseFloat(d[yStat]));
 
-    const xScale = data => (
-      d3.scaleLinear()
-        .domain([xMin(data), xMax(data)])
-        .range([lPadding, width - rPadding])
-    );
+    const xScale = d3.scaleLinear()
+      .domain([xMin(scatterplotData), xMax(scatterplotData)])
+      .range([lPadding, width - rPadding]);
 
-    const yScale = data => (
-      d3.scaleLinear()
-        .domain([yMin(data), yMax(data)])
-        .range([height - bPadding, tPadding])
-    );
+    const yScale = d3.scaleLinear()
+      .domain([yMin(scatterplotData), yMax(scatterplotData)])
+      .range([height - bPadding, tPadding]);
 
     return (
       <div className={styles.scatterplot}>
@@ -59,19 +55,24 @@ export class Scatterplot extends Component {
             scatterplotData={scatterplotData}
             xStat={xStat}
             yStat={yStat}
-            xScale={xScale(scatterplotData)}
-            yScale={yScale(scatterplotData)}
+            xScale={xScale}
+            yScale={yScale}
           />
-          <ScatterplotXYAxes
-            scatterplotData={scatterplotData}
-            xStat={xStat}
-            yStat={yStat}
-            xScale={xScale(scatterplotData)}
-            yScale={yScale(scatterplotData)}
-            lPadding={lPadding}
-            rPadding={rPadding}
-            tPadding={tPadding}
-            bPadding={bPadding}
+          <ScatterplotAxis // x axis
+            translate={`translate(0, ${height - bPadding})`}
+            scale={xScale}
+            orient="bottom"
+            stat={xStat}
+            padding={bPadding}
+            width={width}
+            height={height}
+          />
+          <ScatterplotAxis // y axis
+            translate={`translate(${lPadding}, 0)`}
+            scale={yScale}
+            orient="left"
+            stat={yStat}
+            padding={lPadding}
             width={width}
             height={height}
           />
@@ -86,3 +87,5 @@ Scatterplot.propTypes = {
   xStat: PropTypes.string.isRequired,
   yStat: PropTypes.string.isRequired,
 };
+
+export default Scatterplot;
