@@ -20,7 +20,7 @@ class ScatterplotDots extends Component {
     } = this.props;
 
     const t = d3.transition()
-      .duration(750);
+      .duration(500);
 
     const circles = d3.select('.circles')
       .selectAll('circle')
@@ -39,8 +39,6 @@ class ScatterplotDots extends Component {
     circles.enter().append('circle')
       .attr('cx', d => xScale(d[xStat]))
       .attr('cy', yScale(0))
-      .attr('r', 8)
-      .attr('fill', 'grey')
       .transition(t)
       .attr('cy', d => yScale(d[yStat]))
       .attr('r', d => rScale(d.games_played))
