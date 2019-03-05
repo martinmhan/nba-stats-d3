@@ -2,7 +2,6 @@
 Customizable scatterplot of NBA statistics built with React, Redux, and D3
 
 TBD:
-- Transition animations on data changes
 - Dynamic circle sizes
 - Circle colors varied by player's team
 - More comprehensive player info pop-up on hover
