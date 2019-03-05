@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 import { ScatterplotDots } from './ScatterplotDots';
 import { ScatterplotXYAxes } from './ScatterplotXYAxes';
@@ -79,3 +80,9 @@ export class Scatterplot extends Component {
     );
   };
 }
+
+Scatterplot.propTypes = {
+  scatterplotData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  xStat: PropTypes.string.isRequired,
+  yStat: PropTypes.string.isRequired,
+};

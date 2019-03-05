@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Axios from 'axios';
 import ScatterplotViewContainer from '../containers/ScatterplotViewContainer';
 import styles from '../styles/App.css';
@@ -19,3 +20,7 @@ export class App extends Component {
     </div>
   );
 }
+
+App.propTypes = {
+  updatePlayerData: PropTypes.func.isRequired,
+};
