@@ -1,5 +1,14 @@
-const db = require('./index.js');
+const pool = require('./index.js');
 
 module.exports = {
-  getAllPlayersData: () => (db.query('SELECT DISTINCT * FROM player_data;')),
+  getAllPlayersData: async () => {
+    try {
+      const client = await pool.connect();
+      const data = await client.query('SELECT DISTINCT * FROM player_data;');
+      client.release();
+      return data;
+    } catch (err) {
+      return console.error(err);
+    }
+  },
 };

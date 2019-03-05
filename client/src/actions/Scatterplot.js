@@ -3,6 +3,7 @@ import {
   UPDATE_Y_STAT,
   UPDATE_POSITION_FILTERS,
   UPDATE_TEAM_FILTERS,
+  UPDATE_PLAYER_DATA,
 } from './actionTypes';
 
 export const updateScatterplotXStat = xStat => ({
@@ -23,4 +24,9 @@ export const updateScatterplotPositionFilters = positionFilters => ({
 export const updateScatterplotTeamFilters = teamFilters => ({
   type: UPDATE_TEAM_FILTERS,
   teamFilters,
+});
+
+export const updatePlayerData = playerData => ({
+  type: UPDATE_PLAYER_DATA,
+  playerData,
 });

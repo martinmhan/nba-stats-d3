@@ -3,6 +3,7 @@ import {
   UPDATE_Y_STAT,
   UPDATE_POSITION_FILTERS,
   UPDATE_TEAM_FILTERS,
+  UPDATE_PLAYER_DATA,
 } from '../actions/actionTypes';
 
 export const xStat = (state = 'games_played', action) => {
@@ -40,6 +41,15 @@ export const teamFilters = (state = allTeams, action) => {
   switch (action.type) {
     case UPDATE_TEAM_FILTERS:
       return action.teamFilters;
+    default:
+      return state;
+  }
+};
+
+export const playerData = (state = [], action) => {
+  switch (action.type) {
+    case UPDATE_PLAYER_DATA:
+      return action.playerData;
     default:
       return state;
   }

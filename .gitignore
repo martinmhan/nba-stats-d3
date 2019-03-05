@@ -64,3 +64,4 @@ typings/
 bundle.js
 
 api.config.js
+seed.sql

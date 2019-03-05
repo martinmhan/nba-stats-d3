@@ -8,7 +8,9 @@
     "build:dev": "webpack -w --env.NODE_ENV=development --progress",
     "build:prod": "webpack --env.NODE_ENV=production",
     "start:dev": "nodemon server/index.js",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build-seed-query": "node database/seed.js",
+    "seed": "psql -U ballislife -d ballislife -f database/seed.sql"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
     "eslint": "^5.15.0",
@@ -40,6 +43,7 @@
     "jest": "^24.1.0",
     "jest-enzyme": "^7.0.1",
     "nodemon": "^1.18.10",
+    "style-loader": "^0.23.1",
     "supertest": "^3.4.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"

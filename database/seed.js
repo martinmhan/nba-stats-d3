@@ -36,7 +36,7 @@ const teamIds = [
   '583ec70e-fb46-11e1-82cb-f4ce4684ea4c', // knicks
 ];
 
-let sql = '';
+let sql = 'DELETE FROM player_data;\n';
 
 // API only allows requests one team at a time and limits requests per second
 // Use recursive function to get data for all teams

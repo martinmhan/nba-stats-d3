@@ -7,7 +7,7 @@ export class App extends Component {
   componentWillMount = async () => {
     try {
       const { data } = await Axios.get('/api/data/');
-      this.props.updateScatterplotData(data);
+      this.props.updatePlayerData(data);
     } catch (err) {
       console.error(err);
     }
