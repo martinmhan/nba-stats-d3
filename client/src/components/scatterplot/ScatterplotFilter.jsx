@@ -3,23 +3,7 @@ import PropTypes from 'prop-types';
 import ScatterplotFilterOption from './ScatterplotFilterOption';
 import styles from '../../styles/scatterplot/ScatterplotFilter.css';
 
-export const ScatterplotAxisSelector = ({ name, values, updateStat }) => (
-  <div className={styles.scatterplotfilter}>
-    <div className={styles.scatterplotfiltername}>
-      {name}
-    </div>
-    <select
-      className={styles.scatterplotfilterselect}
-      onChange={(e) => { updateStat(e.target.value.split(' ').map(a => a.toLowerCase()).join('_')); }}
-    >
-      {values.map((value, i) => (
-        <option value={value} key={i}>{value}</option>
-      ))}
-    </select>
-  </div>
-);
-
-export const ScatterplotFilter = ({ name, values, filters, updateFilters }) => (
+const ScatterplotFilter = ({ name, values, filters, updateFilters }) => (
   <div className={styles.scatterplotfilter}>
     <div className={styles.scatterplotfiltername}>
       {name}
@@ -62,15 +46,11 @@ export const ScatterplotFilter = ({ name, values, filters, updateFilters }) => (
   </div>
 );
 
-ScatterplotAxisSelector.propTypes = {
-  name: PropTypes.string.isRequired,
-  values: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateStat: PropTypes.func.isRequired,
-};
-
 ScatterplotFilter.propTypes = {
   name: PropTypes.string.isRequired,
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
   filters: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateFilters: PropTypes.func.isRequired,
 };
+
+export default ScatterplotFilter;

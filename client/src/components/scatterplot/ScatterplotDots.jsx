@@ -8,7 +8,14 @@ class ScatterplotDots extends Component {
   componentDidUpdate = () => { this.renderDots(); }
 
   renderDots = () => {
-    const { scatterplotData, xScale, yScale, xStat, yStat } = this.props;
+    const {
+      scatterplotData,
+      xScale,
+      yScale,
+      xStat,
+      yStat,
+    } = this.props;
+
     const t = d3.transition()
       .duration(750);
 

@@ -11,6 +11,7 @@ export class ScatterplotDot extends Component {
   }
 
   handleMouseEnter = () => { this.setState({ hovered: true }); }
+
   handleMouseLeave = () => { this.setState({ hovered: false }); }
 
   render = () => {

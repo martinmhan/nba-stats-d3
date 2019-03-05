@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../styles/scatterplot/ScatterplotFiltersList.css';
-import { ScatterplotAxisSelector, ScatterplotFilter } from './ScatterplotFilter';
+import ScatterplotFilter from './ScatterplotFilter';
+import ScatterplotAxisSelector from './ScatterplotAxisSelector';
 
 const ScatterplotFiltersList = (props) => {
   const {
