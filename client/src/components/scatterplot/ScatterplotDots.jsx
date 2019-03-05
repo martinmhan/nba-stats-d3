@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
+import styles from '../../styles/scatterplot/ScatterplotDot.css';
 
 class ScatterplotDots extends Component {
   componentDidMount = () => { this.renderDots(); }
@@ -12,6 +13,8 @@ class ScatterplotDots extends Component {
       scatterplotData,
       xScale,
       yScale,
+      rScale,
+      colorScale,
       xStat,
       yStat,
     } = this.props;
@@ -30,7 +33,8 @@ class ScatterplotDots extends Component {
     circles.transition(t)
       .attr('cx', d => xScale(d[xStat]))
       .attr('cy', d => yScale(d[yStat]))
-      .attr('r', 8);
+      .attr('r', d => rScale(d.games_played))
+      .attr('fill', d => colorScale(d.team_name));
 
     circles.enter().append('circle')
       .attr('cx', d => xScale(d[xStat]))
@@ -38,7 +42,10 @@ class ScatterplotDots extends Component {
       .attr('r', 8)
       .attr('fill', 'grey')
       .transition(t)
-      .attr('cy', d => yScale(d[yStat]));
+      .attr('cy', d => yScale(d[yStat]))
+      .attr('r', d => rScale(d.games_played))
+      .attr('class', styles.scatterplotdot)
+      .attr('fill', d => colorScale(d.team_name));
   };
 
   render = () => (
@@ -50,6 +57,8 @@ ScatterplotDots.propTypes = {
   scatterplotData: PropTypes.arrayOf(PropTypes.object).isRequired,
   xScale: PropTypes.func.isRequired,
   yScale: PropTypes.func.isRequired,
+  rScale: PropTypes.func.isRequired,
+  colorScale: PropTypes.func.isRequired,
   xStat: PropTypes.string.isRequired,
   yStat: PropTypes.string.isRequired,
 };

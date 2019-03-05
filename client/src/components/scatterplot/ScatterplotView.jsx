@@ -57,6 +57,7 @@ class ScatterplotView extends Component {
           playerData={playerData}
           xStat={xStat}
           yStat={yStat}
+          teams={teams}
         />
       </div>
     );
