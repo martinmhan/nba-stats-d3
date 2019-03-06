@@ -5,6 +5,8 @@ import {
   positionFilters,
   teamFilters,
   playerData,
+  playerInfoViewOpen,
+  selectedPlayer,
 } from './ScatterplotReducers';
 
 const rootReducer = combineReducers({
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
   positionFilters,
   teamFilters,
   playerData,
+  playerInfoViewOpen,
+  selectedPlayer,
 });
 
 export default rootReducer;

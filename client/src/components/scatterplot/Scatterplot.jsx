@@ -60,37 +60,35 @@ class Scatterplot extends Component {
       .range(teams.map((team, i) => d3Scale.interpolatePlasma(i / teams.length)));
 
     return (
-      <div className={styles.scatterplot}>
-        <svg ref={ref} className={styles.scatterplotsvg} width="100%" height="100%">
-          <ScatterplotDots
-            scatterplotData={scatterplotData}
-            xStat={xStat}
-            yStat={yStat}
-            xScale={xScale}
-            yScale={yScale}
-            rScale={rScale}
-            colorScale={colorScale}
-          />
-          <ScatterplotAxis // x axis
-            translate={`translate(0, ${height - bPadding})`}
-            scale={xScale}
-            orient="bottom"
-            stat={xStat}
-            padding={bPadding}
-            width={width}
-            height={height}
-          />
-          <ScatterplotAxis // y axis
-            translate={`translate(${lPadding}, 0)`}
-            scale={yScale}
-            orient="left"
-            stat={yStat}
-            padding={lPadding}
-            width={width}
-            height={height}
-          />
-        </svg>
-      </div>
+      <svg ref={ref} className={styles.scatterplotsvg} width="100%" height="100%">
+        <ScatterplotDots
+          scatterplotData={scatterplotData}
+          xStat={xStat}
+          yStat={yStat}
+          xScale={xScale}
+          yScale={yScale}
+          rScale={rScale}
+          colorScale={colorScale}
+        />
+        <ScatterplotAxis // x axis
+          translate={`translate(0, ${height - bPadding})`}
+          scale={xScale}
+          orient="bottom"
+          stat={xStat}
+          padding={bPadding}
+          width={width}
+          height={height}
+        />
+        <ScatterplotAxis // y axis
+          translate={`translate(${lPadding}, 0)`}
+          scale={yScale}
+          orient="left"
+          stat={yStat}
+          padding={lPadding}
+          width={width}
+          height={height}
+        />
+      </svg>
     );
   };
 }

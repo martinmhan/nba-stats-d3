@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Scatterplot from './Scatterplot';
 import ScatterplotFiltersList from './ScatterplotFiltersList';
+import PlayerInfoView from './PlayerInfoView';
 import { allPositions, allTeams } from '../../reducers/ScatterplotReducers';
 import styles from '../../styles/scatterplot/ScatterplotView.css';
 
@@ -25,10 +26,14 @@ class ScatterplotView extends Component {
       yStat,
       positionFilters,
       teamFilters,
+      playerInfoViewOpen,
+      selectedPlayer,
       updateScatterplotXStat,
       updateScatterplotYStat,
       updateScatterplotPositionFilters,
       updateScatterplotTeamFilters,
+      togglePlayerInfoView,
+      updateSelectedPlayer,
     } = this.props;
 
     const scatterplotData = playerData
@@ -58,11 +63,21 @@ class ScatterplotView extends Component {
           xStat={xStat}
           yStat={yStat}
           teams={teams}
+          updateSelectedPlayer={updateSelectedPlayer}
         />
+        {
+          playerInfoViewOpen
+            ? <PlayerInfoView selectedPlayer={selectedPlayer} togglePlayerInfoView={togglePlayerInfoView} />
+            : null
+        }
       </div>
     );
   };
 }
+
+ScatterplotView.defaultProps = {
+  selectedPlayer: null,
+};
 
 ScatterplotView.propTypes = {
   playerData: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -70,10 +85,14 @@ ScatterplotView.propTypes = {
   yStat: PropTypes.string.isRequired,
   positionFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
   teamFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  playerInfoViewOpen: PropTypes.bool.isRequired,
+  selectedPlayer: PropTypes.objectOf(PropTypes.any),
   updateScatterplotXStat: PropTypes.func.isRequired,
   updateScatterplotYStat: PropTypes.func.isRequired,
   updateScatterplotPositionFilters: PropTypes.func.isRequired,
   updateScatterplotTeamFilters: PropTypes.func.isRequired,
+  togglePlayerInfoView: PropTypes.func.isRequired,
+  updateSelectedPlayer: PropTypes.func.isRequired,
 };
 
 export default ScatterplotView;
