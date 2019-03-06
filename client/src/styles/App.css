@@ -2,23 +2,6 @@
   border: solid black 1px;
   display: flex;
   width: auto;
-  height: 100vh;
-  overflow: auto;
+  height: 100%;
   font-family: 'Roboto', sans-serif;
-}
-
-.currentviewcontainer {
-  border: solid black 1px;
-  flex-grow: 1;
-  width: 80%;
-  height: 100vh;
-  overflow: auto;
-  background-color:#E5E7E9;
-}
-
-.navbarContainer {
-  background-color: #1D428A;
-  width: auto;
-  height: 100vh;
-  overflow: auto;
 }
