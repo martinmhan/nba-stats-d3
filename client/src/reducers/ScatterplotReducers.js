@@ -60,7 +60,7 @@ export const playerData = (state = [], action) => {
 export const playerInfoViewOpen = (state = true, action) => {
   switch (action.type) {
     case TOGGLE_PLAYER_INFO_VIEW:
-      return action.playerInfoViewOpen;
+      return !state;
     default:
       return state;
   }

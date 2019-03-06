@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
   updateScatterplotYStat: (yStat) => { dispatch(updateScatterplotYStat(yStat)); },
   updateScatterplotPositionFilters: (positionFilters) => { dispatch(updateScatterplotPositionFilters(positionFilters)); },
   updateScatterplotTeamFilters: (teamFilters) => { dispatch(updateScatterplotTeamFilters(teamFilters)); },
-  togglePlayerInfoView: (playerInfoViewOpen) => { dispatch(togglePlayerInfoView(playerInfoViewOpen)); },
+  togglePlayerInfoView: () => { dispatch(togglePlayerInfoView()); },
   updateSelectedPlayer: (selectedPlayer) => { dispatch(updateSelectedPlayer(selectedPlayer)); },
 });
 

@@ -1,3 +1,7 @@
 .scatterplotdot {
   opacity: 0.5;
 }
+
+.scatterplotdot:hover {
+  cursor: pointer;
+}

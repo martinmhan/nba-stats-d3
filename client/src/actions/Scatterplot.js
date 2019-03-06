@@ -33,9 +33,8 @@ export const updatePlayerData = playerData => ({
   playerData,
 });
 
-export const togglePlayerInfoView = playerInfoViewOpen => ({
+export const togglePlayerInfoView = () => ({
   type: TOGGLE_PLAYER_INFO_VIEW,
-  playerInfoViewOpen: !playerInfoViewOpen,
 });
 
 export const updateSelectedPlayer = player => ({

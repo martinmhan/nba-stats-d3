@@ -63,7 +63,9 @@ class ScatterplotView extends Component {
           xStat={xStat}
           yStat={yStat}
           teams={teams}
+          playerInfoViewOpen={playerInfoViewOpen}
           updateSelectedPlayer={updateSelectedPlayer}
+          togglePlayerInfoView={togglePlayerInfoView}
         />
         {
           playerInfoViewOpen
