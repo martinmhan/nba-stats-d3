@@ -5,6 +5,7 @@ import * as d3Scale from 'd3-scale-chromatic';
 import ScatterplotPlayerNameBackground from './ScatterplotPlayerNameBackground';
 import ScatterplotDots from './ScatterplotDots';
 import ScatterplotAxis from './ScatterplotAxis';
+import PlayerInfoView from './PlayerInfoView';
 import styles from '../../styles/scatterplot/Scatterplot.css';
 
 class Scatterplot extends Component {
@@ -84,6 +85,11 @@ class Scatterplot extends Component {
         {
           hoveredPlayer
             ? <ScatterplotPlayerNameBackground player={hoveredPlayer} />
+            : null
+        }
+        {
+          selectedPlayer
+            ? <PlayerInfoView selectedPlayer={selectedPlayer} updateSelectedPlayer={updateSelectedPlayer} />
             : null
         }
         <svg ref={ref} className={styles.scatterplotsvg} width="100%" height="100%">

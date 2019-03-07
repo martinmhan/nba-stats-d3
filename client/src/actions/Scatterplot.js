@@ -38,12 +38,12 @@ export const togglePlayerInfoView = () => ({
   type: TOGGLE_PLAYER_INFO_VIEW,
 });
 
-export const updateSelectedPlayer = player => ({
+export const updateSelectedPlayer = selectedPlayer => ({
   type: UPDATE_SELECTED_PLAYER,
-  selectedPlayer: player,
+  selectedPlayer,
 });
 
-export const updateHoveredPlayer = player => ({
+export const updateHoveredPlayer = hoveredPlayer => ({
   type: UPDATE_HOVERED_PLAYER,
-  hoveredPlayer: player,
+  hoveredPlayer,
 });

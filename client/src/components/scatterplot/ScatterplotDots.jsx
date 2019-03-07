@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 import styles from '../../styles/scatterplot/ScatterplotDot.css';
-import { updateHoveredPlayer } from '../../actions/Scatterplot';
 
 class ScatterplotDots extends Component {
   componentDidMount = () => { this.renderDots(); }

@@ -6,7 +6,7 @@ import styles from '../../styles/scatterplot/PlayerInfo.css';
 const PlayerInfo = ({ player }) => (
   <div className={styles.playerinfo}>
     {Object.keys(player).map(stat => (
-      <PlayerInfoStat stat={stat} value={player[stat]} />
+      <PlayerInfoStat stat={stat} value={player[stat]} key={stat} />
     ))}
   </div>
 );

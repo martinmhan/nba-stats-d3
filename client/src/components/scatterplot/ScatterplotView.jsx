@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Scatterplot from './Scatterplot';
 import ScatterplotFiltersList from './ScatterplotFiltersList';
-import PlayerInfoView from './PlayerInfoView';
 import { allPositions, allTeams } from '../../reducers/ScatterplotReducers';
 import styles from '../../styles/scatterplot/ScatterplotView.css';
 
@@ -72,11 +71,6 @@ class ScatterplotView extends Component {
           togglePlayerInfoView={togglePlayerInfoView}
           updateHoveredPlayer={updateHoveredPlayer}
         />
-        {
-          playerInfoViewOpen
-            ? <PlayerInfoView selectedPlayer={selectedPlayer} togglePlayerInfoView={togglePlayerInfoView} />
-            : null
-        }
       </div>
     );
   };
