@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 import * as d3Scale from 'd3-scale-chromatic';
+import ScatterplotPlayerNameBackground from './ScatterplotPlayerNameBackground';
 import ScatterplotDots from './ScatterplotDots';
 import ScatterplotAxis from './ScatterplotAxis';
 import styles from '../../styles/scatterplot/Scatterplot.css';
@@ -38,9 +39,12 @@ class Scatterplot extends Component {
       xStat,
       yStat,
       teams,
+      selectedPlayer,
+      hoveredPlayer,
       playerInfoViewOpen,
       updateSelectedPlayer,
       togglePlayerInfoView,
+      updateHoveredPlayer,
     } = this.props;
 
     const {
@@ -76,50 +80,66 @@ class Scatterplot extends Component {
       .range(teams.map((team, i) => d3Scale.interpolatePlasma(i / teams.length)));
 
     return (
-      <svg ref={ref} className={styles.scatterplotsvg} width="100%" height="100%">
-        <ScatterplotDots
-          scatterplotData={scatterplotData}
-          xStat={xStat}
-          yStat={yStat}
-          xScale={xScale}
-          yScale={yScale}
-          rScale={rScale}
-          colorScale={colorScale}
-          playerInfoViewOpen={playerInfoViewOpen}
-          updateSelectedPlayer={updateSelectedPlayer}
-          togglePlayerInfoView={togglePlayerInfoView}
-        />
-        <ScatterplotAxis // x axis
-          translate={`translate(0, ${height - bPadding})`}
-          scale={xScale}
-          orient="bottom"
-          stat={xStat}
-          padding={bPadding}
-          width={width}
-          height={height}
-        />
-        <ScatterplotAxis // y axis
-          translate={`translate(${lPadding}, 0)`}
-          scale={yScale}
-          orient="left"
-          stat={yStat}
-          padding={lPadding}
-          width={width}
-          height={height}
-        />
-      </svg>
+      <div className={styles.scatterplot}>
+        {
+          hoveredPlayer
+            ? <ScatterplotPlayerNameBackground player={hoveredPlayer} />
+            : null
+        }
+        <svg ref={ref} className={styles.scatterplotsvg} width="100%" height="100%">
+          <ScatterplotDots
+            scatterplotData={scatterplotData}
+            xStat={xStat}
+            yStat={yStat}
+            xScale={xScale}
+            yScale={yScale}
+            rScale={rScale}
+            colorScale={colorScale}
+            playerInfoViewOpen={playerInfoViewOpen}
+            updateSelectedPlayer={updateSelectedPlayer}
+            togglePlayerInfoView={togglePlayerInfoView}
+            updateHoveredPlayer={updateHoveredPlayer}
+          />
+          <ScatterplotAxis // x axis
+            translate={`translate(0, ${height - bPadding})`}
+            scale={xScale}
+            orient="bottom"
+            stat={xStat}
+            padding={bPadding}
+            width={width}
+            height={height}
+          />
+          <ScatterplotAxis // y axis
+            translate={`translate(${lPadding}, 0)`}
+            scale={yScale}
+            orient="left"
+            stat={yStat}
+            padding={lPadding}
+            width={width}
+            height={height}
+          />
+        </svg>
+      </div>
     );
   };
 }
+
+Scatterplot.defaultProps = {
+  selectedPlayer: null,
+  hoveredPlayer: null,
+};
 
 Scatterplot.propTypes = {
   scatterplotData: PropTypes.arrayOf(PropTypes.object).isRequired,
   xStat: PropTypes.string.isRequired,
   yStat: PropTypes.string.isRequired,
   teams: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedPlayer: PropTypes.objectOf(PropTypes.any),
+  hoveredPlayer: PropTypes.objectOf(PropTypes.any),
   playerInfoViewOpen: PropTypes.bool.isRequired,
   updateSelectedPlayer: PropTypes.func.isRequired,
   togglePlayerInfoView: PropTypes.func.isRequired,
+  updateHoveredPlayer: PropTypes.func.isRequired,
 };
 
 export default Scatterplot;

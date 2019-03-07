@@ -7,6 +7,7 @@ import {
   playerData,
   playerInfoViewOpen,
   selectedPlayer,
+  hoveredPlayer,
 } from './ScatterplotReducers';
 
 const rootReducer = combineReducers({
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   playerData,
   playerInfoViewOpen,
   selectedPlayer,
+  hoveredPlayer,
 });
 
 export default rootReducer;

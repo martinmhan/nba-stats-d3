@@ -4,4 +4,6 @@
 
 .scatterplotdot:hover {
   cursor: pointer;
+  stroke: black;
+  stroke-width: "5"
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 import styles from '../../styles/scatterplot/ScatterplotDot.css';
+import { updateHoveredPlayer } from '../../actions/Scatterplot';
 
 class ScatterplotDots extends Component {
   componentDidMount = () => { this.renderDots(); }
@@ -19,6 +20,7 @@ class ScatterplotDots extends Component {
       yStat,
       updateSelectedPlayer,
       togglePlayerInfoView,
+      updateHoveredPlayer,
     } = this.props;
 
     const t = d3.transition()
@@ -45,6 +47,8 @@ class ScatterplotDots extends Component {
         if (!this.props.playerInfoViewOpen) { togglePlayerInfoView(); }
         updateSelectedPlayer(d);
       })
+      .on('mouseover', (d) => { updateHoveredPlayer(d); })
+      .on('mouseout', () => { updateHoveredPlayer(null); })
       .transition(t)
       .attr('cy', d => yScale(d[yStat]))
       .attr('r', d => rScale(d.games_played))
@@ -68,6 +72,7 @@ ScatterplotDots.propTypes = {
   playerInfoViewOpen: PropTypes.bool.isRequired,
   updateSelectedPlayer: PropTypes.func.isRequired,
   togglePlayerInfoView: PropTypes.func.isRequired,
+  updateHoveredPlayer: PropTypes.func.isRequired,
 };
 
 export default ScatterplotDots;

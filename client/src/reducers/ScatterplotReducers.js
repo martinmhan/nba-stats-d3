@@ -6,6 +6,7 @@ import {
   UPDATE_PLAYER_DATA,
   TOGGLE_PLAYER_INFO_VIEW,
   UPDATE_SELECTED_PLAYER,
+  UPDATE_HOVERED_PLAYER,
 } from '../actions/actionTypes';
 
 export const xStat = (state = 'games_played', action) => {
@@ -70,6 +71,15 @@ export const selectedPlayer = (state = null, action) => {
   switch (action.type) {
     case UPDATE_SELECTED_PLAYER:
       return action.selectedPlayer;
+    default:
+      return state;
+  }
+};
+
+export const hoveredPlayer = (state = null, action) => {
+  switch (action.type) {
+    case UPDATE_HOVERED_PLAYER:
+      return action.hoveredPlayer;
     default:
       return state;
   }

@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PlayerInfoContent from './PlayerInfoContent';
+import styles from '../../styles/scatterplot/PlayerInfoView.css';
 
 const PlayerInfoView = ({ selectedPlayer, togglePlayerInfoView }) => (
-  <div className="playerinfoview">
+  <div className={styles.playerinfoview}>
     <button type="button" onClick={togglePlayerInfoView} />
     {
       selectedPlayer
-        ? (
-          <h1 className="playerinfoviewname">
-            {`${selectedPlayer.first_name} ${selectedPlayer.last_name}`}
-          </h1>
-        )
+        ? <PlayerInfoContent selectedPlayer={selectedPlayer} />
         : null
     }
-    {/* {JSON.stringify(selectedPlayer)} */}
   </div>
 );
 

@@ -1,4 +1,5 @@
 .scatterplot {
+  position: relative;
   border: solid black 1px;
   width: 100%;
   height: 100%;

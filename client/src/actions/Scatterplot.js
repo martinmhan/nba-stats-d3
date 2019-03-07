@@ -6,6 +6,7 @@ import {
   UPDATE_PLAYER_DATA,
   TOGGLE_PLAYER_INFO_VIEW,
   UPDATE_SELECTED_PLAYER,
+  UPDATE_HOVERED_PLAYER,
 } from './actionTypes';
 
 export const updateScatterplotXStat = xStat => ({
@@ -40,4 +41,9 @@ export const togglePlayerInfoView = () => ({
 export const updateSelectedPlayer = player => ({
   type: UPDATE_SELECTED_PLAYER,
   selectedPlayer: player,
+});
+
+export const updateHoveredPlayer = player => ({
+  type: UPDATE_HOVERED_PLAYER,
+  hoveredPlayer: player,
 });
