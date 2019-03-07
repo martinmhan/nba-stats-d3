@@ -5,6 +5,9 @@ import {
   updateScatterplotYStat,
   updateScatterplotPositionFilters,
   updateScatterplotTeamFilters,
+  togglePlayerInfoView,
+  updateSelectedPlayer,
+  updateHoveredPlayer,
 } from '../actions/Scatterplot';
 
 const mapStateToProps = state => ({
@@ -13,6 +16,9 @@ const mapStateToProps = state => ({
   yStat: state.yStat,
   positionFilters: state.positionFilters,
   teamFilters: state.teamFilters,
+  playerInfoViewOpen: state.playerInfoViewOpen,
+  selectedPlayer: state.selectedPlayer,
+  hoveredPlayer: state.hoveredPlayer,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,6 +26,9 @@ const mapDispatchToProps = dispatch => ({
   updateScatterplotYStat: (yStat) => { dispatch(updateScatterplotYStat(yStat)); },
   updateScatterplotPositionFilters: (positionFilters) => { dispatch(updateScatterplotPositionFilters(positionFilters)); },
   updateScatterplotTeamFilters: (teamFilters) => { dispatch(updateScatterplotTeamFilters(teamFilters)); },
+  togglePlayerInfoView: () => { dispatch(togglePlayerInfoView()); },
+  updateSelectedPlayer: (selectedPlayer) => { dispatch(updateSelectedPlayer(selectedPlayer)); },
+  updateHoveredPlayer: (hoveredPlayer) => { dispatch(updateHoveredPlayer(hoveredPlayer)); },
 });
 
 const ScatterplotViewContainer = connect(mapStateToProps, mapDispatchToProps)(ScatterplotView);

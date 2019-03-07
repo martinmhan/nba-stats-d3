@@ -25,10 +25,16 @@ class ScatterplotView extends Component {
       yStat,
       positionFilters,
       teamFilters,
+      playerInfoViewOpen,
+      selectedPlayer,
+      hoveredPlayer,
       updateScatterplotXStat,
       updateScatterplotYStat,
       updateScatterplotPositionFilters,
       updateScatterplotTeamFilters,
+      togglePlayerInfoView,
+      updateSelectedPlayer,
+      updateHoveredPlayer,
     } = this.props;
 
     const scatterplotData = playerData
@@ -58,11 +64,22 @@ class ScatterplotView extends Component {
           xStat={xStat}
           yStat={yStat}
           teams={teams}
+          selectedPlayer={selectedPlayer}
+          hoveredPlayer={hoveredPlayer}
+          playerInfoViewOpen={playerInfoViewOpen}
+          updateSelectedPlayer={updateSelectedPlayer}
+          togglePlayerInfoView={togglePlayerInfoView}
+          updateHoveredPlayer={updateHoveredPlayer}
         />
       </div>
     );
   };
 }
+
+ScatterplotView.defaultProps = {
+  selectedPlayer: null,
+  hoveredPlayer: null,
+};
 
 ScatterplotView.propTypes = {
   playerData: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -70,10 +87,16 @@ ScatterplotView.propTypes = {
   yStat: PropTypes.string.isRequired,
   positionFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
   teamFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  playerInfoViewOpen: PropTypes.bool.isRequired,
+  selectedPlayer: PropTypes.objectOf(PropTypes.any),
+  hoveredPlayer: PropTypes.objectOf(PropTypes.any),
   updateScatterplotXStat: PropTypes.func.isRequired,
   updateScatterplotYStat: PropTypes.func.isRequired,
   updateScatterplotPositionFilters: PropTypes.func.isRequired,
   updateScatterplotTeamFilters: PropTypes.func.isRequired,
+  togglePlayerInfoView: PropTypes.func.isRequired,
+  updateSelectedPlayer: PropTypes.func.isRequired,
+  updateHoveredPlayer: PropTypes.func.isRequired,
 };
 
 export default ScatterplotView;

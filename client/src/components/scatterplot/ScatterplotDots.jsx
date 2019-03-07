@@ -17,6 +17,9 @@ class ScatterplotDots extends Component {
       colorScale,
       xStat,
       yStat,
+      updateSelectedPlayer,
+      togglePlayerInfoView,
+      updateHoveredPlayer,
     } = this.props;
 
     const t = d3.transition()
@@ -39,6 +42,12 @@ class ScatterplotDots extends Component {
     circles.enter().append('circle')
       .attr('cx', d => xScale(d[xStat]))
       .attr('cy', yScale(0))
+      .on('click', (d) => {
+        if (!this.props.playerInfoViewOpen) { togglePlayerInfoView(); }
+        updateSelectedPlayer(d);
+      })
+      .on('mouseover', (d) => { updateHoveredPlayer(d); })
+      .on('mouseout', () => { updateHoveredPlayer(null); })
       .transition(t)
       .attr('cy', d => yScale(d[yStat]))
       .attr('r', d => rScale(d.games_played))
@@ -59,6 +68,10 @@ ScatterplotDots.propTypes = {
   colorScale: PropTypes.func.isRequired,
   xStat: PropTypes.string.isRequired,
   yStat: PropTypes.string.isRequired,
+  playerInfoViewOpen: PropTypes.bool.isRequired,
+  updateSelectedPlayer: PropTypes.func.isRequired,
+  togglePlayerInfoView: PropTypes.func.isRequired,
+  updateHoveredPlayer: PropTypes.func.isRequired,
 };
 
 export default ScatterplotDots;
