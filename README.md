@@ -6,6 +6,6 @@ Technical Stack:
 
 # Demos
 - Display player names on hover: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_hover.gif
-- Change stats from dropdown: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_changestat.gif
+- Change stats from dropdown: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_change_stats.gif
 - Filter players by position: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_filter_positions.gif
-- Filter players by team: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_filterteam.gif
+- Filter players by team: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_filter_teams.gif
