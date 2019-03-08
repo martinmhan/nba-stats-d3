@@ -1,18 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import PlayerInfoStat from './PlayerInfoStat';
-import styles from '../../styles/scatterplot/PlayerInfo.css';
+import PlayerInfoContent from './PlayerInfoContent';
+import styles from '../../styles/PlayerInfo/PlayerInfo.css';
 
-const PlayerInfo = ({ player }) => (
-  <div className={styles.playerinfo}>
-    {Object.keys(player).map(stat => (
-      <PlayerInfoStat stat={stat} value={player[stat]} key={stat} />
-    ))}
-  </div>
-);
+class PlayerInfoView extends Component {
+  componentDidMount = () => { this.playerinfo.focus(); };
 
-PlayerInfo.propTypes = {
-  player: PropTypes.objectOf(PropTypes.any).isRequired,
+  componentDidUpdate = () => { this.playerinfo.focus(); }
+
+  setRef = (element) => { this.playerinfo = element; };
+
+  render = () => {
+    const { selectedPlayer, updateSelectedPlayer } = this.props;
+
+    return (
+      <div className={styles.playerinfoview} tabIndex="-1" ref={this.setRef} onBlur={() => { updateSelectedPlayer(null); }}>
+        {
+          this.props.selectedPlayer
+            ? <PlayerInfoContent selectedPlayer={selectedPlayer} />
+            : null
+        }
+      </div>
+    );
+  };
+}
+
+PlayerInfoView.defaultProps = {
+  selectedPlayer: null,
 };
 
-export default PlayerInfo;
+PlayerInfoView.propTypes = {
+  selectedPlayer: PropTypes.objectOf(PropTypes.any),
+  updateSelectedPlayer: PropTypes.func.isRequired,
+};
+
+export default PlayerInfoView;

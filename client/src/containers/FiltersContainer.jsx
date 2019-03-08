@@ -1,13 +1,10 @@
 import { connect } from 'react-redux';
-import ScatterplotFiltersList from '../components/Filters/ScatterplotFiltersList';
+import ScatterplotFiltersList from '../components/Filters/Filters';
 import {
-  updatePlayerData,
   updateXStat,
   updateYStat,
   updatePositionFilters,
   updateTeamFilters,
-  updateSelectedPlayer,
-  updateHoveredPlayer,
 } from '../actions/actions';
 
 const mapStateToProps = state => ({
@@ -22,13 +19,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updatePlayerData: (playerData) => { dispatch(updatePlayerData(playerData)); },
   updateXStat: (xStat) => { dispatch(updateXStat(xStat)); },
   updateYStat: (yStat) => { dispatch(updateYStat(yStat)); },
   updatePositionFilters: (positionFilters) => { dispatch(updatePositionFilters(positionFilters)); },
   updateTeamFilters: (teamFilters) => { dispatch(updateTeamFilters(teamFilters)); },
-  updateSelectedPlayer: (selectedPlayer) => { dispatch(updateSelectedPlayer(selectedPlayer)); },
-  updateHoveredPlayer: (hoveredPlayer) => { dispatch(updateHoveredPlayer(hoveredPlayer)); },
 });
 
 const FiltersContainer = connect(mapStateToProps, mapDispatchToProps)(ScatterplotFiltersList);

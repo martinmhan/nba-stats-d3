@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
-import styles from '../../styles/scatterplot/ScatterplotDot.css';
+import styles from '../../styles/Scatterplot/ScatterplotDot.css';
 
 class ScatterplotDots extends Component {
   componentDidMount = () => { this.renderDots(); }
@@ -18,7 +18,6 @@ class ScatterplotDots extends Component {
       xStat,
       yStat,
       updateSelectedPlayer,
-      togglePlayerInfoView,
       updateHoveredPlayer,
     } = this.props;
 
@@ -43,7 +42,6 @@ class ScatterplotDots extends Component {
       .attr('cx', d => xScale(d[xStat]))
       .attr('cy', yScale(0))
       .on('click', (d) => {
-        if (!this.props.playerInfoViewOpen) { togglePlayerInfoView(); }
         updateSelectedPlayer(d);
       })
       .on('mouseover', (d) => { updateHoveredPlayer(d); })
@@ -68,9 +66,7 @@ ScatterplotDots.propTypes = {
   colorScale: PropTypes.func.isRequired,
   xStat: PropTypes.string.isRequired,
   yStat: PropTypes.string.isRequired,
-  playerInfoViewOpen: PropTypes.bool.isRequired,
   updateSelectedPlayer: PropTypes.func.isRequired,
-  togglePlayerInfoView: PropTypes.func.isRequired,
   updateHoveredPlayer: PropTypes.func.isRequired,
 };
 

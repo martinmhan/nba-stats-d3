@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ScatterplotFilterOption from './ScatterplotFilterOption';
-import styles from '../../styles/scatterplot/ScatterplotFilter.css';
+import ScatterplotFilterOption from './FilterOption';
+import styles from '../../styles/Filters/Filter.css';
 
 const ScatterplotFilter = ({ name, values, filters, updateFilters }) => (
   <div className={styles.scatterplotfilter}>
