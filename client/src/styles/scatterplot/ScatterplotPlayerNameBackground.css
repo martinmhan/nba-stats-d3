@@ -1,7 +1,7 @@
 .scatterplotplayernamebackground {
   position: absolute;
   z-index: -1;
-  top: 40px;
+  top: 20px;
   left: 60px;
   margin: 10px;
   color: rgba(0, 0, 0, 0.3);
