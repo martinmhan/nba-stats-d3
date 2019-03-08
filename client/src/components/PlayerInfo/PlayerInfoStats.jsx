@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlayerInfoStat from './PlayerInfoStat';
-import styles from '../../styles/scatterplot/PlayerInfo.css';
+import styles from '../../styles/PlayerInfo/PlayerInfoStats.css';
 
 const PlayerInfo = ({ player }) => (
   <div className={styles.playerinfo}>

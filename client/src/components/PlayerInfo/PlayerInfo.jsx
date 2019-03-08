@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PlayerInfoContent from './PlayerInfoContent';
-import styles from '../../styles/scatterplot/PlayerInfoView.css';
+import styles from '../../styles/PlayerInfo/PlayerInfo.css';
 
 class PlayerInfoView extends Component {
   componentDidMount = () => { this.playerinfo.focus(); };

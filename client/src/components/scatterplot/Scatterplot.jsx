@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 import * as d3Scale from 'd3-scale-chromatic';
+import Axios from 'axios';
+import { allTeams } from '../../reducers/reducers';
+import PlayerInfoContainer from '../../containers/PlayerInfoContainer';
 import ScatterplotPlayerNameBackground from './ScatterplotPlayerNameBackground';
 import ScatterplotDots from './ScatterplotDots';
 import ScatterplotAxis from './ScatterplotAxis';
-import PlayerInfoView from './PlayerInfoView';
-import styles from '../../styles/scatterplot/Scatterplot.css';
+import styles from '../../styles/Scatterplot/Scatterplot.css';
 
 class Scatterplot extends Component {
   constructor(props) {
@@ -22,6 +24,15 @@ class Scatterplot extends Component {
     };
   }
 
+  componentWillMount = async () => {
+    try {
+      const { data } = await Axios.get('/api/data/');
+      this.props.updatePlayerData(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   componentDidMount = () => {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
@@ -36,15 +47,14 @@ class Scatterplot extends Component {
   render = () => {
     const { ref } = this;
     const {
-      scatterplotData,
+      playerData,
+      positionFilters,
+      teamFilters,
       xStat,
       yStat,
-      teams,
       selectedPlayer,
       hoveredPlayer,
-      playerInfoViewOpen,
       updateSelectedPlayer,
-      togglePlayerInfoView,
       updateHoveredPlayer,
     } = this.props;
 
@@ -56,6 +66,10 @@ class Scatterplot extends Component {
       width,
       height,
     } = this.state;
+
+    const scatterplotData = playerData
+      .filter(player => positionFilters.includes(player.primary_position))
+      .filter(player => teamFilters.includes(player.team_name));
 
     const xMin = data => d3.min(data, d => parseFloat(d[xStat]));
     const xMax = data => d3.max(data, d => parseFloat(d[xStat]));
@@ -77,21 +91,13 @@ class Scatterplot extends Component {
       .range([3, 20]);
 
     const colorScale = d3.scaleOrdinal()
-      .domain(teams)
-      .range(teams.map((team, i) => d3Scale.interpolatePlasma(i / teams.length)));
+      .domain(allTeams)
+      .range(allTeams.map((team, i) => d3Scale.interpolatePlasma(i / allTeams.length)));
 
     return (
       <div className={styles.scatterplot}>
-        {
-          hoveredPlayer
-            ? <ScatterplotPlayerNameBackground player={hoveredPlayer} />
-            : null
-        }
-        {
-          selectedPlayer
-            ? <PlayerInfoView selectedPlayer={selectedPlayer} updateSelectedPlayer={updateSelectedPlayer} />
-            : null
-        }
+        { hoveredPlayer ? <ScatterplotPlayerNameBackground player={hoveredPlayer} /> : null }
+        {/* { selectedPlayer ? <PlayerInfoContainer /> : null // still working on styling for player info component }  */}
         <svg ref={ref} className={styles.scatterplotsvg} width="100%" height="100%">
           <ScatterplotDots
             scatterplotData={scatterplotData}
@@ -101,9 +107,7 @@ class Scatterplot extends Component {
             yScale={yScale}
             rScale={rScale}
             colorScale={colorScale}
-            playerInfoViewOpen={playerInfoViewOpen}
             updateSelectedPlayer={updateSelectedPlayer}
-            togglePlayerInfoView={togglePlayerInfoView}
             updateHoveredPlayer={updateHoveredPlayer}
           />
           <ScatterplotAxis // x axis
@@ -136,15 +140,15 @@ Scatterplot.defaultProps = {
 };
 
 Scatterplot.propTypes = {
-  scatterplotData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  playerData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  positionFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  teamFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
   xStat: PropTypes.string.isRequired,
   yStat: PropTypes.string.isRequired,
-  teams: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedPlayer: PropTypes.objectOf(PropTypes.any),
   hoveredPlayer: PropTypes.objectOf(PropTypes.any),
-  playerInfoViewOpen: PropTypes.bool.isRequired,
+  updatePlayerData: PropTypes.func.isRequired,
   updateSelectedPlayer: PropTypes.func.isRequired,
-  togglePlayerInfoView: PropTypes.func.isRequired,
   updateHoveredPlayer: PropTypes.func.isRequired,
 };
 

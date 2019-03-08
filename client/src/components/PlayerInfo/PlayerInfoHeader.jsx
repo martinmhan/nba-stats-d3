@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../styles/scatterplot/PlayerInfoHeader.css';
+import styles from '../../styles/PlayerInfo/PlayerInfoHeader.css';
 
 const PlayerInfoHeader = ({ player }) => (
   <h1 className={styles.playerinfoheader}>

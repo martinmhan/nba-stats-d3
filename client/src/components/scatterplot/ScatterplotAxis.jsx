@@ -7,41 +7,50 @@ class ScatterplotAxis extends Component {
 
   componentDidUpdate = () => { this.renderAxis(); };
 
-  renderAxis = () => {
-    const node = this.refs.axis;
-    const { orient, scale } = this.props;
+  setRef = (element) => { this.axis = element; }
 
-    const axis =
-      orient === 'bottom' ?
-        d3.axisBottom(scale)
-          .ticks(5)
-          .tickFormat(d => d.toString())
-      : orient === 'left' ?
-        d3.axisLeft(scale)
-          .ticks(5)
-      : null;
+  renderAxis = () => {
+    const node = this.axis;
+    const { orient, scale } = this.props;
+    let axis;
+
+    if (orient === 'bottom') {
+      axis = d3.axisBottom(scale)
+        .ticks(5)
+        .tickFormat(d => d.toString());
+    } else if (orient === 'left') {
+      axis = d3.axisLeft(scale)
+        .ticks(5);
+    }
 
     d3.select(node).call(axis);
   };
 
   render = () => {
-    const { orient, translate, padding, width, height, stat } = this.props;
+    const {
+      orient,
+      translate,
+      padding,
+      width,
+      height,
+      stat,
+    } = this.props;
+
     const statFormatted = stat.split('_').map(s => s[0].toUpperCase() + s.slice(1)).join(' ');
+
+    const textSettings = {};
+    if (orient === 'bottom') {
+      textSettings.transform = `translate(${width / 2}, ${height - padding / 3})`;
+    } else if (orient === 'left') {
+      textSettings.transform = 'rotate(-90)';
+      textSettings.x = `${0 - height / 2}`;
+      textSettings.y = `${padding / 2}`;
+    }
 
     return (
       <g className="scatterplotaxiscontainer">
-        {
-          orient === 'bottom' ?
-            <text transform={`translate(${width / 2}, ${height - padding / 3})`}>{statFormatted}</text>
-          : orient === 'left' ?
-            <text
-              transform={`rotate(-90)`}
-              x={`${0 - height / 2}`}
-              y={`${padding / 2}`}
-            >{statFormatted}</text>
-          : null
-        }
-        <g className="scatterplotaxis" ref="axis" transform={translate} />
+        <text {...textSettings}>{statFormatted}</text>
+        <g className="scatterplotaxis" ref={this.setRef} transform={translate} />
       </g>
     );
   };
