@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Scatterplot from './Scatterplot';
-import ScatterplotFiltersList from './ScatterplotFiltersList';
-import { allPositions, allTeams } from '../../reducers/ScatterplotReducers';
-import styles from '../../styles/scatterplot/ScatterplotView.css';
+import Scatterplot from './Scatterplot/Scatterplot';
+import ScatterplotFiltersList from './Filters/ScatterplotFiltersList';
+import FiltersContainer from '../containers/FiltersContainer';
+import { allPositions, allTeams } from '../reducers/reducers';
+import styles from '../styles/scatterplot/ScatterplotView.css';
 
 class ScatterplotView extends Component {
   constructor(props) {
@@ -28,10 +29,10 @@ class ScatterplotView extends Component {
       playerInfoViewOpen,
       selectedPlayer,
       hoveredPlayer,
-      updateScatterplotXStat,
-      updateScatterplotYStat,
-      updateScatterplotPositionFilters,
-      updateScatterplotTeamFilters,
+      updateXStat,
+      updateYStat,
+      updatePositionFilters,
+      updateTeamFilters,
       togglePlayerInfoView,
       updateSelectedPlayer,
       updateHoveredPlayer,
@@ -46,18 +47,7 @@ class ScatterplotView extends Component {
 
     return (
       <div className={styles.scatterplotview} ref={this.ref}>
-        <ScatterplotFiltersList
-          playerData={playerData}
-          stats={stats}
-          positions={positions}
-          teams={teams}
-          positionFilters={positionFilters}
-          teamFilters={teamFilters}
-          updateXStat={updateScatterplotXStat}
-          updateYStat={updateScatterplotYStat}
-          updateScatterplotPositionFilters={updateScatterplotPositionFilters}
-          updateScatterplotTeamFilters={updateScatterplotTeamFilters}
-        />
+        <FiltersContainer stats={stats} positions={positions} teams={teams} />
         <Scatterplot
           scatterplotData={scatterplotData}
           playerData={playerData}
@@ -90,10 +80,10 @@ ScatterplotView.propTypes = {
   playerInfoViewOpen: PropTypes.bool.isRequired,
   selectedPlayer: PropTypes.objectOf(PropTypes.any),
   hoveredPlayer: PropTypes.objectOf(PropTypes.any),
-  updateScatterplotXStat: PropTypes.func.isRequired,
-  updateScatterplotYStat: PropTypes.func.isRequired,
-  updateScatterplotPositionFilters: PropTypes.func.isRequired,
-  updateScatterplotTeamFilters: PropTypes.func.isRequired,
+  updateXStat: PropTypes.func.isRequired,
+  updateYStat: PropTypes.func.isRequired,
+  updatePositionFilters: PropTypes.func.isRequired,
+  updateTeamFilters: PropTypes.func.isRequired,
   togglePlayerInfoView: PropTypes.func.isRequired,
   updateSelectedPlayer: PropTypes.func.isRequired,
   updateHoveredPlayer: PropTypes.func.isRequired,

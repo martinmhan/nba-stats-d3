@@ -4,7 +4,6 @@ import {
   UPDATE_POSITION_FILTERS,
   UPDATE_TEAM_FILTERS,
   UPDATE_PLAYER_DATA,
-  TOGGLE_PLAYER_INFO_VIEW,
   UPDATE_SELECTED_PLAYER,
   UPDATE_HOVERED_PLAYER,
 } from '../actions/actionTypes';
@@ -53,15 +52,6 @@ export const playerData = (state = [], action) => {
   switch (action.type) {
     case UPDATE_PLAYER_DATA:
       return action.playerData;
-    default:
-      return state;
-  }
-};
-
-export const playerInfoViewOpen = (state = true, action) => {
-  switch (action.type) {
-    case TOGGLE_PLAYER_INFO_VIEW:
-      return !state;
     default:
       return state;
   }

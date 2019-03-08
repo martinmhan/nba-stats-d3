@@ -5,10 +5,9 @@ import {
   positionFilters,
   teamFilters,
   playerData,
-  playerInfoViewOpen,
   selectedPlayer,
   hoveredPlayer,
-} from './ScatterplotReducers';
+} from './reducers';
 
 const rootReducer = combineReducers({
   xStat,
@@ -16,7 +15,6 @@ const rootReducer = combineReducers({
   positionFilters,
   teamFilters,
   playerData,
-  playerInfoViewOpen,
   selectedPlayer,
   hoveredPlayer,
 });

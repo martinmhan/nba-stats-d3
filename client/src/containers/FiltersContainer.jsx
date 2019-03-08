@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ScatterplotView from '../components/ScatterplotView';
+import ScatterplotFiltersList from '../components/Filters/ScatterplotFiltersList';
 import {
   updatePlayerData,
   updateXStat,
@@ -31,6 +31,6 @@ const mapDispatchToProps = dispatch => ({
   updateHoveredPlayer: (hoveredPlayer) => { dispatch(updateHoveredPlayer(hoveredPlayer)); },
 });
 
-const ScatterplotViewContainer = connect(mapStateToProps, mapDispatchToProps)(ScatterplotView);
+const FiltersContainer = connect(mapStateToProps, mapDispatchToProps)(ScatterplotFiltersList);
 
-export default ScatterplotViewContainer;
+export default FiltersContainer;

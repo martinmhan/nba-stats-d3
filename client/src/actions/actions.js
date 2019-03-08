@@ -4,27 +4,26 @@ import {
   UPDATE_POSITION_FILTERS,
   UPDATE_TEAM_FILTERS,
   UPDATE_PLAYER_DATA,
-  TOGGLE_PLAYER_INFO_VIEW,
   UPDATE_SELECTED_PLAYER,
   UPDATE_HOVERED_PLAYER,
 } from './actionTypes';
 
-export const updateScatterplotXStat = xStat => ({
+export const updateXStat = xStat => ({
   type: UPDATE_X_STAT,
   xStat,
 });
 
-export const updateScatterplotYStat = yStat => ({
+export const updateYStat = yStat => ({
   type: UPDATE_Y_STAT,
   yStat,
 });
 
-export const updateScatterplotPositionFilters = positionFilters => ({
+export const updatePositionFilters = positionFilters => ({
   type: UPDATE_POSITION_FILTERS,
   positionFilters,
 });
 
-export const updateScatterplotTeamFilters = teamFilters => ({
+export const updateTeamFilters = teamFilters => ({
   type: UPDATE_TEAM_FILTERS,
   teamFilters,
 });
@@ -32,10 +31,6 @@ export const updateScatterplotTeamFilters = teamFilters => ({
 export const updatePlayerData = playerData => ({
   type: UPDATE_PLAYER_DATA,
   playerData,
-});
-
-export const togglePlayerInfoView = () => ({
-  type: TOGGLE_PLAYER_INFO_VIEW,
 });
 
 export const updateSelectedPlayer = selectedPlayer => ({

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updatePlayerData } from '../actions/Scatterplot';
+import { updatePlayerData } from '../actions/actions';
 import App from '../components/App';
 
 const mapStateToProps = state => ({

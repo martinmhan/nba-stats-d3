@@ -5,7 +5,7 @@ import * as d3Scale from 'd3-scale-chromatic';
 import ScatterplotPlayerNameBackground from './ScatterplotPlayerNameBackground';
 import ScatterplotDots from './ScatterplotDots';
 import ScatterplotAxis from './ScatterplotAxis';
-import PlayerInfoView from './PlayerInfoView';
+import PlayerInfoView from '../PlayerInfo/PlayerInfoView';
 import styles from '../../styles/scatterplot/Scatterplot.css';
 
 class Scatterplot extends Component {
