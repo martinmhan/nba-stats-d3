@@ -5,7 +5,7 @@ Technical Stack:
 - Development: PostgreSQL | Express | D3.js | React | Redux | Node.js
 
 # Demos
+- Display player names on hover: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_hover.gif
 - Change stats from dropdown: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_changestat.gif
 - Filter players by position: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_filter_positions.gif
 - Filter players by team: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_filterteam.gif
-- Show player names on hover: https://s3-us-west-1.amazonaws.com/gitbuckets/vizit/vizit_hover.gif

@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 
 class ScatterplotAxis extends Component {
+  static propTypes = {
+    orient: PropTypes.string.isRequired,
+    scale: PropTypes.func.isRequired,
+    translate: PropTypes.string.isRequired,
+    padding: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    stat: PropTypes.string.isRequired,
+  };
+
   componentDidMount = () => { this.renderAxis(); };
 
   componentDidUpdate = () => { this.renderAxis(); };
@@ -23,7 +33,12 @@ class ScatterplotAxis extends Component {
         .ticks(5);
     }
 
-    d3.select(node).call(axis);
+    const t = d3.transition()
+      .duration(500);
+
+    d3.select(node)
+      .transition(t)
+      .call(axis);
   };
 
   render = () => {
@@ -55,15 +70,5 @@ class ScatterplotAxis extends Component {
     );
   };
 }
-
-ScatterplotAxis.propTypes = {
-  orient: PropTypes.string.isRequired,
-  scale: PropTypes.func.isRequired,
-  translate: PropTypes.string.isRequired,
-  padding: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  stat: PropTypes.string.isRequired,
-};
 
 export default ScatterplotAxis;
