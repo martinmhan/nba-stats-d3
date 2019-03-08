@@ -4,11 +4,9 @@ import PlayerInfoContent from './PlayerInfoContent';
 import styles from '../../styles/scatterplot/PlayerInfoView.css';
 
 class PlayerInfoView extends Component {
-  componentDidMount = () => {
-    this.playerinfo.focus();
-  };
+  componentDidMount = () => { this.playerinfo.focus(); };
 
-  componentDidUpdate = () => { console.log('updated'); this.playerinfo.focus(); }
+  componentDidUpdate = () => { this.playerinfo.focus(); }
 
   setRef = (element) => { this.playerinfo = element; };
 
